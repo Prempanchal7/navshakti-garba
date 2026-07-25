@@ -1,0 +1,657 @@
+/* ===========================
+   NAVSHAKTI GARBA CLASSES
+   STYLE.CSS - PART 1
+=========================== */
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#5B0F16;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#f5a623;
+    border-radius:10px;
+}
+
+/* Sections */
+section{
+    padding:90px 10%;
+}
+
+/* Heading */
+h1,h2,h3{
+    font-weight:700;
+}
+
+h2{
+    text-align:center;
+    font-size:2.4rem;
+    color:#f5a623;
+    margin-bottom:40px;
+}
+
+/* Paragraph */
+p{
+    line-height:1.8;
+    color:#ddd;
+}
+
+/* Button */
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 35px;
+    background:#f5a623;
+    color:#000;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#fff;
+    transform:translateY(-4px);
+}
+
+/* ===========================
+   Premium Batch Cards
+=========================== */
+/
+
+#batches{
+    width:80%;
+    max-width:900px;
+    margin:80px auto;
+}
+
+.card{
+    background:#1D1D1D;
+    border:2px solid #D4AF37;
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:25px;
+    transition:.35s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 25px rgba(212,175,55,.4);
+    border-color:#FFD700;
+}
+
+.card h3{
+    color:#D4AF37;
+    font-family:'Cinzel',serif;
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#F5F5F5;
+    font-size:1.2rem;
+}
+/* ===========================
+   STYLE.CSS - PART 2
+   Loader + Hero Section
+=========================== */
+
+/* Loader */
+#loader{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#4A0D12,#6E1220,#4A0D12);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:loaderFade 3.5s forwards;
+}
+
+#loader img{
+    width:220px;
+    border-radius:50%;
+    padding:18px;
+    background:rgba(255,255,255,.05);
+    border:3px solid #D4AF37;
+    box-shadow:0 0 35px rgba(212,175,55,.6);
+    animation:logoZoom 2.2s ease;
+}
+
+#loader h1{
+    margin-top:30px;
+    font-family:'Cinzel',serif;
+    color:#F7E7CE;
+    font-size:2.6rem;
+    letter-spacing:3px;
+}
+
+@keyframes logoZoom{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes loaderFade{
+    0%,85%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* Hero Section */
+/* ===========================
+   HERO SECTION
+=========================== */
+
+#hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 80px;
+
+    background:
+    linear-gradient(rgba(91,15,22,.82),rgba(91,15,22,.82)),
+    url("images/hero.jpg");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.hero-logo{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    border:3px solid #D4AF37;
+    box-shadow:0 0 30px rgba(212,175,55,.45);
+    margin-bottom:25px;
+}
+
+#hero h1{
+    font-family:'Cinzel',serif;
+    color:#F7E7CE;
+    font-size:60px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+#hero p{
+    color:#F4D58D;
+    font-size:22px;
+    margin-bottom:40px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+
+.hero-buttons .btn{
+    width:220px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50px;
+    font-size:1.1rem;
+    font-weight:600;
+    transition:.3s ease;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#FFD54F,#D4AF37);
+    color:#2B0A0A;
+    border:none;
+}
+
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(212,175,55,.4);
+}
+
+.btn-outline{
+    background:transparent;
+    border:2px solid #D4AF37;
+    color:#F7E7CE;
+}
+
+.btn-outline:hover{
+    background:#D4AF37;
+    color:#2B0A0A;
+    transform:translateY(-4px);
+}
+
+.btn,
+.btn2{
+    width:220px;
+    height:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:20px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn{
+    background:#D4AF37;
+    color:#111;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(212,175,55,.5);
+}
+
+.btn2{
+    border:2px solid #D4AF37;
+    color:#D4AF37;
+    background:transparent;
+}
+
+.btn2:hover{
+    background:#D4AF37;
+    color:#111;
+}
+
+#hero h1{
+    font-family:'Cinzel',serif;
+    font-size:4rem;
+    color:#F7E7CE;
+}
+
+#hero p{
+    margin-top:18px;
+    color:#F4D58D;
+    font-size:1.2rem;
+}
+/* ===========================
+   ABOUT
+=========================== */
+
+.about-box{
+    width:80%;
+    max-width:900px;
+    margin:40px auto;
+    background:#1C1C1C;
+    border:2px solid #D4AF37;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.about-box h3{
+    color:#D4AF37;
+    font-family:'Cinzel',serif;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.about-box p{
+    color:#F5F5F5;
+    font-size:1.1rem;
+    line-height:1.9;
+}
+/* ===========================
+   CONTACT
+=========================== */
+
+.contact-card{
+    width:80%;
+    max-width:900px;
+    margin:40px auto;
+    background:#1D1D1D;
+    border:2px solid #D4AF37;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin:25px 0;
+}
+
+.contact-item i{
+    font-size:30px;
+    color:#D4AF37;
+    width:40px;
+}
+
+.contact-item h3{
+    color:#D4AF37;
+    margin-bottom:5px;
+}
+
+.contact-item p{
+    color:#fff;
+}
+/* ===========================
+   NAVBAR
+=========================== */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 8%;
+    background:rgba(30,10,12,.85);
+    backdrop-filter:blur(10px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:999;
+    border-bottom:1px solid rgba(212,175,55,.3);
+}
+
+.logo-name{
+    font-family:'Cinzel',serif;
+    font-size:28px;
+    color:#D4AF37;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:17px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#D4AF37;
+}
+/* ===========================
+   FLOATING SOCIAL BUTTONS
+=========================== */
+
+.floating-btn{
+    position:fixed;
+    right:25px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    font-size:28px;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
+    transition:.3s;
+    z-index:1000;
+}
+
+.whatsapp{
+    bottom:100px;
+    background:#25D366;
+}
+
+.instagram{
+    bottom:25px;
+    background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);
+}
+
+.floating-btn:hover{
+    transform:scale(1.15);
+}
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    background:#2A0A10;
+    border-top:2px solid #D4AF37;
+    text-align:center;
+    padding:50px 20px;
+    margin-top:80px;
+}
+
+footer h2{
+    color:#D4AF37;
+    font-family:'Cinzel',serif;
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#F5F5F5;
+    margin:10px 0;
+}
+
+footer i{
+    color:#D4AF37;
+    margin-right:8px;
+}
+
+.copyright{
+    margin-top:30px;
+    color:#BFBFBF;
+    font-size:14px;
+}
+/* Second Button */
+
+.btn2{
+    display:inline-block;
+    margin-left:15px;
+    padding:14px 35px;
+    border:2px solid #D4AF37;
+    color:#D4AF37;
+    text-decoration:none;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.btn2:hover{
+    background:#D4AF37;
+    color:#111;
+}
+/* ===========================
+   SCROLL ANIMATION
+=========================== */
+
+.hidden{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all .8s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+/* ===========================
+   MOBILE RESPONSIVE
+=========================== */
+
+@media (max-width: 768px){
+
+    section{
+        padding:70px 20px;
+    }
+
+    /* Navbar */
+    .navbar{
+        padding:15px 20px;
+        flex-direction:column;
+        gap:12px;
+        height:auto;
+    }
+
+    .nav-links{
+        gap:18px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .nav-links a{
+        font-size:15px;
+    }
+
+    /* Hero */
+
+    #hero{
+        padding-top:140px;
+        min-height:100vh;
+    }
+
+    .hero-logo{
+        width:120px;
+        height:120px;
+    }
+
+    #hero h1{
+        font-size:2.3rem;
+        line-height:1.2;
+    }
+
+    #hero p{
+        font-size:1rem;
+        padding:0 10px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+        gap:15px;
+    }
+
+    .btn,
+    .btn2{
+        width:100%;
+        max-width:280px;
+    }
+
+    /* About */
+
+    .about-box{
+        width:100%;
+        padding:25px;
+    }
+
+    /* Batch Cards */
+
+    #batches{
+        width:100%;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h3{
+        font-size:1.4rem;
+    }
+
+    .card p{
+        font-size:1rem;
+    }
+
+    /* Contact */
+
+    .contact-card{
+        width:100%;
+        padding:25px;
+    }
+
+    .contact-buttons{
+        flex-direction:column;
+    }
+
+    /* Floating Buttons */
+
+    .floating-btn{
+        width:55px;
+        height:55px;
+        font-size:24px;
+    }
+
+}
+/* ===========================
+   MOBILE MENU
+=========================== */
+
+.menu-toggle{
+    display:none;
+    color:#D4AF37;
+    font-size:28px;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        top:75px;
+        left:0;
+        width:100%;
+        background:#4A0D12;
+        flex-direction:column;
+        align-items:center;
+        padding:25px 0;
+        display:none;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .nav-links li{
+        margin:12px 0;
+    }
+}
