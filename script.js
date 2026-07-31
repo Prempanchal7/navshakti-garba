@@ -64,8 +64,15 @@ async function loadGallery() {
         } else {
 
             item.innerHTML = `
-                <img src="${data.url}" alt="Gallery">
-            `;
+    <img src="${data.url}" alt="Gallery" class="gallery-img">
+`;
+
+const img = item.querySelector(".gallery-img");
+
+img.onclick = () => {
+    popup.style.display = "flex";
+    popupImage.src = data.url;
+};
 
         }
 
@@ -76,3 +83,20 @@ async function loadGallery() {
 }
 
 loadGallery();
+const popup = document.getElementById("imagePopup");
+const popupImage = document.getElementById("popupImage");
+const closePopup = document.getElementById("closePopup");
+
+if (popup && popupImage && closePopup) {
+
+    closePopup.onclick = () => {
+        popup.style.display = "none";
+    };
+
+    popup.onclick = (e) => {
+        if (e.target === popup) {
+            popup.style.display = "none";
+        }
+    };
+
+}
