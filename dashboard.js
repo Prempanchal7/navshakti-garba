@@ -143,16 +143,17 @@ reviewBtn.addEventListener("click", async () => {
   }
 
   await addDoc(collection(db, "reviews"), {
-    name,
-    review,
-    createdAt: serverTimestamp()
-  });
+  name,
+  review,
+  createdAt: serverTimestamp()
+});
 
-  alert("✅ Review Added");
+alert("✅ Review Added");
 
-  document.getElementById("reviewName").value = "";
-  document.getElementById("reviewText").value = "";
+document.getElementById("reviewName").value = "";
+document.getElementById("reviewText").value = "";
 
+loadReviews();
 });
 
 // Logout
@@ -166,5 +167,53 @@ logoutBtn.addEventListener("click", async () => {
 
 });
 
+
+
+const reviews = document.getElementById("reviews");
+
+async function loadReviews() {
+
+  reviews.innerHTML = "";
+
+  const q = query(
+    collection(db, "reviews"),
+    orderBy("createdAt", "desc")
+  );
+
+  const snapshot = await getDocs(q);
+
+  snapshot.forEach((reviewDoc) => {
+
+    const data = reviewDoc.data();
+
+    const item = document.createElement("div");
+
+    item.innerHTML = `
+      <h3>${data.name}</h3>
+      <p>${data.review}</p>
+      <button class="deleteBtn">🗑 Delete</button>
+      <hr>
+    `;
+
+    item.querySelector(".deleteBtn").addEventListener("click", async () => {
+
+      if (!confirm("Delete this review?")) return;
+
+      await deleteDoc(doc(db, "reviews", reviewDoc.id));
+
+      loadReviews();
+
+    });
+
+    reviews.appendChild(item);
+
+  });
+
+}
+
+
+
+
 // Load Gallery
 loadGallery();
+loadReviews();
