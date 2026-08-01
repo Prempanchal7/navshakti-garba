@@ -14,7 +14,8 @@ import {
   orderBy,
   serverTimestamp,
   deleteDoc,
-  doc
+  doc,
+  setDoc
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Check Login
@@ -215,5 +216,76 @@ async function loadReviews() {
 
 
 // Load Gallery
+
+
+const pendingReviews = document.getElementById("pendingReviews");
+
+async function loadPendingReviews() {
+
+    pendingReviews.innerHTML = "";
+
+    const q = query(
+        collection(db, "pendingReviews"),
+        orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
+
+    snapshot.forEach((reviewDoc) => {
+
+        const data = reviewDoc.data();
+
+        const item = document.createElement("div");
+        item.className = "reviewItem";
+
+        item.innerHTML = `
+            <h3>${data.name}</h3>
+            <p>${data.review}</p>
+
+            <button class="approveBtn">
+                ✅ Approve
+            </button>
+
+            <button class="deleteBtn">
+                🗑 Delete
+            </button>
+        `;
+
+        // Approve
+        item.querySelector(".approveBtn").onclick = async () => {
+
+            await addDoc(collection(db, "reviews"), {
+
+                name: data.name,
+                review: data.review,
+                createdAt: serverTimestamp()
+
+            });
+
+            await deleteDoc(doc(db, "pendingReviews", reviewDoc.id));
+
+            loadPendingReviews();
+            loadReviews();
+
+        };
+
+        // Delete
+        item.querySelector(".deleteBtn").onclick = async () => {
+
+            if (!confirm("Delete this review?")) return;
+
+            await deleteDoc(doc(db, "pendingReviews", reviewDoc.id));
+
+            loadPendingReviews();
+
+        };
+
+        pendingReviews.appendChild(item);
+
+    });
+
+}
+
 loadGallery();
 loadReviews();
+loadPendingReviews();

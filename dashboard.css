@@ -108,3 +108,37 @@ button:hover{
 .deleteBtn:hover{
     background:#b71c1c;
 }
+#pendingReviews{
+    margin-top:20px;
+}
+
+.reviewItem{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+    background:#fafafa;
+}
+
+.reviewItem h3{
+    color:#b71c1c;
+    margin-bottom:8px;
+}
+
+.reviewItem p{
+    margin-bottom:15px;
+}
+
+.approveBtn{
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+.approveBtn:hover{
+    background:#1b5e20;
+}

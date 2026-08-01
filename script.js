@@ -4,7 +4,9 @@ import {
     collection,
     getDocs,
     query,
-    orderBy
+    orderBy,
+    addDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 // Scroll Animation
@@ -98,5 +100,92 @@ if (popup && popupImage && closePopup) {
             popup.style.display = "none";
         }
     };
+
+}
+
+// ==========================
+// Load Approved Reviews
+// ==========================
+
+async function loadReviews() {
+
+    const reviewsContainer = document.getElementById("reviewsContainer");
+
+    if (!reviewsContainer) return;
+
+    reviewsContainer.innerHTML = "";
+
+    const q = query(
+        collection(db, "reviews"),
+        orderBy("createdAt", "desc")
+    );
+
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+
+        reviewsContainer.innerHTML =
+        "<p>No reviews yet.</p>";
+
+        return;
+
+    }
+
+    snapshot.forEach((reviewDoc) => {
+
+        const data = reviewDoc.data();
+
+        const card = document.createElement("div");
+
+        card.className = "review-card";
+
+        card.innerHTML = `
+            <h3>${data.name}</h3>
+            <p>${data.review}</p>
+        `;
+
+        reviewsContainer.appendChild(card);
+
+    });
+
+}
+
+loadReviews();
+
+
+// ==========================
+// Student Review Submission
+// ==========================
+
+const submitBtn = document.getElementById("submitReview");
+
+if (submitBtn) {
+
+    submitBtn.addEventListener("click", async () => {
+
+        const name = document.getElementById("studentName").value.trim();
+
+        const review = document.getElementById("studentReview").value.trim();
+
+        if (!name || !review) {
+            alert("Please fill all fields.");
+            return;
+        }
+
+        await addDoc(collection(db, "pendingReviews"), {
+
+            name,
+            review,
+            createdAt: serverTimestamp()
+
+        });
+
+        alert("✅ Thank you! Your review has been sent for approval.");
+
+        document.getElementById("studentName").value = "";
+
+        document.getElementById("studentReview").value = "";
+
+    });
 
 }
